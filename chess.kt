@@ -22,22 +22,37 @@ fun main()
         arrayListOf(Charater.Rook,Charater.Knight,Charater.Bishop,Charater.Queen,Charater.King,Charater.Bishop,Charater.Knight,Charater.Rook),
     )
 
-    println(print_board(board))
+    //print board
+    print_board(board)
     
+    //
 }
 
+fun move_chess()
+{
+
+
+}
 
 fun print_board(board:ArrayList<ArrayList<Charater>>)
 {
     for(i in 0..7)
     {
+        println(" ")
+        println("------|------|------|------|------|------|------|------")
         for(j in 0..7)
         {
-            print(board[i][j])   
-            print(" ")
+            when(board[i][j])
+            {
+                Charater.King -> print(" King ")
+                Charater.Queen -> print(" Queen ")
+                Charater.Rook -> print("  Rook ")
+                Charater.Bishop -> print(" Bishop ")
+                Charater.Knight -> print("Knight")
+                Charater.Pawn -> print(" Pawn  ")
+                Charater.Empty -> print(" ")
+            }
         }
-        println("")
-        println("-----+-----+-----+-----+-----+-----+-----+-----")
     }
+    println("")
 }
-
