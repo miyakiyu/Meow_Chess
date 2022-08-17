@@ -95,6 +95,7 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     println("I can't go there dear :/")
                 }
                 //if put the ligal place
+                TODO
                 else if()
                 {
                     println("Ok, I will move :/")
@@ -126,19 +127,22 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     println("Oops I'm stuck !!! :口 ")
                 }
                 //check the ligal step 
-                else if(board[user_row][user_col] == board[user_in_row + i][user_in_col] ||
-                        board[user_row][user_col] == board[user_in_row][user_in_col + i] )
+                for(i in 0..7)
                 {
+                    if(board[user_row][user_col] == board[user_in_row + i][user_in_col] ||
+                        board[user_row][user_col] == board[user_in_row][user_in_col + i] )
+                    {
                         println("HAHA I'm going!")
                         board[user_row][user_col] = Charater.Rook
                         board[user_in_row][user_in_col] = Charater.Empty
                         print_board(board)
                         check = false
+                        break
+                    }
                 }
             }
                 //you put the right place
                 println("I can't move :口 ")
-            }
         }
 
         Charater.Bishop -> 
@@ -159,7 +163,8 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     println("I hope God have give you the eyes -_-")
                 }
                 //you put the right place
-                else if(TODO)
+                TODO
+                else if()
                 {
                     println("OK...")
                     board[user_row][user_col] = Charater.Bishop
