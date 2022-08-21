@@ -31,6 +31,7 @@ fun main()
     val user_in_row:Int = readLine()!!.toInt()
     println("Enter column:")
     val user_in_col:Int = readLine()!!.toInt()
+    //this function will get the board and user input row and column
     move_chess(board,user_in_row,user_in_col)
 }
 
@@ -95,14 +96,21 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     println("I can't go there dear :/")
                 }
                 //if put the ligal place
-                TODO
-                else if()
+                for(i in 0..7)
                 {
-                    println("Ok, I will move :/")
-                    board[user_row][user_col] = Charater.Queen
-                    board[user_in_row][user_in_col] = Charater.Empty
-                    print_board(board)
-                    check = false
+                    if(board[user_row][user_col] == board[user_in_row + i][user_in_col] ||
+                       board[user_row][user_col] == board[user_in_row][user_in_col + i] ||
+                       board[user_row][user_col] == board[user_in_row -i][user_in_col-i] ||
+                       board[user_row][user_col] == board[user_in_row +i][user_in_col-i] ||
+                       board[user_row][user_col] == board[user_in_row -i][user_in_col+i] ||
+                       board[user_row][user_col] == board[user_in_row +i][user_in_col+i])
+                    {
+                        println("Ok, I will move :/")
+                        board[user_row][user_col] = Charater.Queen
+                        board[user_in_row][user_in_col] = Charater.Empty
+                        print_board(board)
+                        check = false
+                    }
                 }
                 //you put the wrong place
                 println("No!not here! >:/")
@@ -140,9 +148,10 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                         break
                     }
                 }
-            }
                 //you put the right place
                 println("I can't move :口 ")
+            }
+
         }
 
         Charater.Bishop -> 
@@ -163,14 +172,19 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     println("I hope God have give you the eyes -_-")
                 }
                 //you put the right place
-                TODO
-                else if()
+                for(i in 0..7)
                 {
-                    println("OK...")
-                    board[user_row][user_col] = Charater.Bishop
-                    board[user_in_row][user_in_col] = Charater.Empty
-                    print_board(board)
-                    check = false
+                    if(board[user_row][user_col] == board[user_in_row -i][user_in_col-i] ||
+                       board[user_row][user_col] == board[user_in_row +i][user_in_col-i] ||
+                       board[user_row][user_col] == board[user_in_row -i][user_in_col+i] ||
+                       board[user_row][user_col] == board[user_in_row +i][user_in_col+i])
+                    {
+                        println("OK...")
+                        board[user_row][user_col] = Charater.Bishop
+                        board[user_in_row][user_in_col] = Charater.Empty
+                        print_board(board)
+                        check = false
+                    }
                 }
                 //you put the wrong place
                 println("I can't move there")
@@ -235,27 +249,30 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     println("Select other place!")
                 }
                 //check the new place if equal to the original place forward 1 step then it's a ligal step
-                else if(board[user_row][user_col] == board[user_in_row][user_in_col+1])
+                else if(board[user_row][user_col] == board[user_row][user_col-1] ||
+                        board[user_row][user_col] == board[user_row][user_col+1] ) 
                 {
                     println("Go Go Go!!!")
                     board[user_row][user_col] = Charater.Pawn
-                    board[user_in_row][user_in_col] = Charater.Empty
+                    board[user_row+1][user_col] = Charater.Empty
                     print_board(board)
                     check = false
                 }
                 //put the wrong place
-                println("I can't get there :(")
+                else
+                {
+                    println("I can't get there :(")
+                }
             }
         }
 
         Charater.Empty -> 
         {
             println("Hmm interesting...")
-            println("What did you see...?")
+            println("What did you see...? :/ ")
         }
     }
 }
-
 
 fun print_board(board:ArrayList<ArrayList<Charater>>)
 {
@@ -276,7 +293,7 @@ fun print_board(board:ArrayList<ArrayList<Charater>>)
                 Charater.Bishop -> print(" Bishop ")
                 Charater.Knight -> print("Knight")
                 Charater.Pawn -> print(" Pawn  ")
-                Charater.Empty -> print(" ")
+                Charater.Empty -> print("       ")
             }
         }
     }
