@@ -57,23 +57,26 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     println("There already have a commoner >:( ")
                 }
                 //put a ligal place
-                else if(board[user_row][user_col] == board[user_in_row][user_in_col+1] ||
-                        board[user_row][user_col] == board[user_in_row][user_in_col-1] ||
-                        board[user_row][user_col] == board[user_in_row+1][user_in_col] ||
-                        board[user_row][user_col] == board[user_in_row-1][user_in_col] ||
-                        board[user_row][user_col] == board[user_in_row-1][user_in_col+1] ||
-                        board[user_row][user_col] == board[user_in_row+1][user_in_col+1] ||
-                        board[user_row][user_col] == board[user_in_row-1][user_in_col-1] ||
-                        board[user_row][user_col] == board[user_in_row+1][user_in_col-1] )
+                else if(board[user_row][user_col] == board[user_row][user_col+1] ||
+                        board[user_row][user_col] == board[user_row][user_col-1] ||
+                        board[user_row][user_col] == board[user_row+1][user_col] ||
+                        board[user_row][user_col] == board[user_row-1][user_col] ||
+                        board[user_row][user_col] == board[user_row-1][user_col+1] ||
+                        board[user_row][user_col] == board[user_row+1][user_col+1] ||
+                        board[user_row][user_col] == board[user_row-1][user_col-1] ||
+                        board[user_row][user_col] == board[user_row+1][user_col-1] )
                 {
                     println("OK I will go there!")
                     board[user_row][user_col] = Charater.King
-                    board[user_in_row][user_in_col] = Charater.Empty
+                    board[user_row][user_col] = Charater.Empty
                     print_board(board)
                     check = false
                 }
                 //you put the wrong place
-                println("I can't move,I will dieeeee!!! :|")
+                else
+                {
+                    println("I can't move,I will dieeeee!!! :|")
+                }
             }
         }
     
@@ -98,16 +101,16 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                 //if put the ligal place
                 for(i in 0..7)
                 {
-                    if(board[user_row][user_col] == board[user_in_row + i][user_in_col] ||
-                       board[user_row][user_col] == board[user_in_row][user_in_col + i] ||
-                       board[user_row][user_col] == board[user_in_row -i][user_in_col-i] ||
-                       board[user_row][user_col] == board[user_in_row +i][user_in_col-i] ||
-                       board[user_row][user_col] == board[user_in_row -i][user_in_col+i] ||
-                       board[user_row][user_col] == board[user_in_row +i][user_in_col+i])
+                    if(board[user_row][user_col] == board[user_row + i][user_col] ||
+                       board[user_row][user_col] == board[user_row][user_col + i] ||
+                       board[user_row][user_col] == board[user_row -i][user_col-i] ||
+                       board[user_row][user_col] == board[user_row +i][user_col-i] ||
+                       board[user_row][user_col] == board[user_row -i][user_col+i] ||
+                       board[user_row][user_col] == board[user_row +i][user_col+i])
                     {
                         println("Ok, I will move :/")
                         board[user_row][user_col] = Charater.Queen
-                        board[user_in_row][user_in_col] = Charater.Empty
+                        board[user_row][user_col] = Charater.Empty
                         print_board(board)
                         check = false
                     }
@@ -135,14 +138,14 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     println("Oops I'm stuck !!! :口 ")
                 }
                 //check the ligal step 
-                for(i in 0..7)
+                for(i in 1..6)
                 {
-                    if(board[user_row][user_col] == board[user_in_row + i][user_in_col] ||
-                        board[user_row][user_col] == board[user_in_row][user_in_col + i] )
+                    if(board[user_row][user_col] == board[user_row + i][user_col] ||
+                       board[user_row][user_col] == board[user_row][user_col + i] )
                     {
                         println("HAHA I'm going!")
                         board[user_row][user_col] = Charater.Rook
-                        board[user_in_row][user_in_col] = Charater.Empty
+                        board[user_row][user_col] = Charater.Empty
                         print_board(board)
                         check = false
                         break
@@ -174,14 +177,14 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                 //you put the right place
                 for(i in 0..7)
                 {
-                    if(board[user_row][user_col] == board[user_in_row -i][user_in_col-i] ||
-                       board[user_row][user_col] == board[user_in_row +i][user_in_col-i] ||
-                       board[user_row][user_col] == board[user_in_row -i][user_in_col+i] ||
-                       board[user_row][user_col] == board[user_in_row +i][user_in_col+i])
+                    if(board[user_row][user_col] == board[user_row -i][user_col-i] ||
+                       board[user_row][user_col] == board[user_row +i][user_col-i] ||
+                       board[user_row][user_col] == board[user_row -i][user_col+i] ||
+                       board[user_row][user_col] == board[user_row +i][user_col+i])
                     {
                         println("OK...")
                         board[user_row][user_col] = Charater.Bishop
-                        board[user_in_row][user_in_col] = Charater.Empty
+                        board[user_row][user_col] = Charater.Empty
                         print_board(board)
                         check = false
                     }
@@ -209,18 +212,18 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     println("Are you serious? >:(")
                 }
                 //put the right place
-                else if(board[user_row][user_col] == board[user_in_row-1][user_in_col+2] ||
-                        board[user_row][user_col] == board[user_in_row-2][user_in_col+1] ||
-                        board[user_row][user_col] == board[user_in_row+1][user_in_col+2] ||
-                        board[user_row][user_col] == board[user_in_row+2][user_in_col+1] ||
-                        board[user_row][user_col] == board[user_in_row-1][user_in_col-2] ||
-                        board[user_row][user_col] == board[user_in_row-2][user_in_col-1] ||
-                        board[user_row][user_col] == board[user_in_row+2][user_in_col+1] ||
-                        board[user_row][user_col] == board[user_in_row+1][user_in_col-2])
+                else if(board[user_row][user_col] == board[user_row-1][user_col+2] ||
+                        board[user_row][user_col] == board[user_row-2][user_col+1] ||
+                        board[user_row][user_col] == board[user_row+1][user_col+2] ||
+                        board[user_row][user_col] == board[user_row+2][user_col+1] ||
+                        board[user_row][user_col] == board[user_row-1][user_col-2] ||
+                        board[user_row][user_col] == board[user_row-2][user_col-1] ||
+                        board[user_row][user_col] == board[user_row+2][user_col+1] ||
+                        board[user_row][user_col] == board[user_row+1][user_col-2])
                 {
                     println("I will bring the death!")
                     board[user_row][user_col] = Charater.Knight
-                    board[user_in_row][user_in_col] = Charater.Empty
+                    board[user_row][user_col] = Charater.Empty
                     print_board(board)
                     check = false
                 }
@@ -246,11 +249,10 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                 if(board[user_row][user_col] != Charater.Empty)
                 {
                     println("Hey! You scared me! :0")
-                    println("Select other place!")
                 }
                 //check the new place if equal to the original place forward 1 step then it's a ligal step
-                else if(board[user_row][user_col] == board[user_row][user_col-1] ||
-                        board[user_row][user_col] == board[user_row][user_col+1] ) 
+                else if(board[user_row][user_col] == board[user_row-1][user_col] ||
+                        board[user_row][user_col] == board[user_row+1][user_col]) 
                 {
                     println("Go Go Go!!!")
                     board[user_row][user_col] = Charater.Pawn
@@ -266,11 +268,7 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
             }
         }
 
-        Charater.Empty -> 
-        {
-            println("Hmm interesting...")
-            println("What did you see...? :/ ")
-        }
+        Charater.Empty -> println("Oh no here doesn't have chess :/")
     }
 }
 
