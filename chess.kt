@@ -11,7 +11,7 @@ enum class Charater
 
 fun main()
 {
-    val board: ArrayList<ArrayList<Charater>> = arrayListOf(
+    var board: ArrayList<ArrayList<Charater>> = arrayListOf(
         arrayListOf(Charater.Rook,Charater.Knight,Charater.Bishop,Charater.Queen,Charater.King,Charater.Bishop,Charater.Knight,Charater.Rook),
         arrayListOf(Charater.Pawn,Charater.Pawn,Charater.Pawn,Charater.Pawn,Charater.Pawn,Charater.Pawn,Charater.Pawn,Charater.Pawn),
         arrayListOf(Charater.Empty,Charater.Empty,Charater.Empty,Charater.Empty,Charater.Empty,Charater.Empty,Charater.Empty,Charater.Empty),
@@ -31,8 +31,13 @@ fun main()
     val user_in_row:Int = readLine()!!.toInt()
     println("Enter column:")
     val user_in_col:Int = readLine()!!.toInt()
-    //this function will get the board and user input row and column
-    move_chess(board,user_in_row,user_in_col)
+    
+    while(true)
+    {
+        move_chess(board,user_in_row,user_in_col)
+    }
+    
+    
 }
 
 fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:Int)
@@ -68,7 +73,38 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                 {
                     println("OK I will go there!")
                     board[user_row][user_col] = Charater.King
-                    board[user_row][user_col] = Charater.Empty
+                    if(board[user_row][user_col] == board[user_row][user_col+1])
+                    {
+                        board[user_row][user_col+1] = Charater.Empty
+                    }
+                    else if(board[user_row][user_col] == board[user_row][user_col-1])
+                    {
+                        board[user_row][user_col-1] = Charater.Empty
+                    }
+                    else if(board[user_row][user_col] == board[user_row+1][user_col])
+                    {
+                        board[user_row+1][user_col]= Charater.Empty
+                    }
+                    else if(board[user_row][user_col] == board[user_row-1][user_col])
+                    {
+                        board[user_row-1][user_col]= Charater.Empty
+                    }
+                    else if(board[user_row][user_col] == board[user_row-1][user_col+1])
+                    {
+                        board[user_row-1][user_col+1]= Charater.Empty
+                    }
+                    else if(board[user_row][user_col] == board[user_row+1][user_col+1])
+                    {
+                        board[user_row+1][user_col+1]= Charater.Empty
+                    }
+                    else if(board[user_row][user_col] == board[user_row-1][user_col-1])
+                    {
+                        board[user_row-1][user_col-1]= Charater.Empty
+                    }
+                    else if(board[user_row][user_col] == board[user_row+1][user_col-1])
+                    {
+                        board[user_row+1][user_col-1]= Charater.Empty
+                    }
                     print_board(board)
                     check = false
                 }
