@@ -9,6 +9,12 @@ enum class Charater
     Empty
 }
 
+enum class Player
+{
+    White,
+    Black
+}
+
 fun main()
 {
     var board: ArrayList<ArrayList<Charater>> = arrayListOf(
@@ -73,38 +79,7 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                 {
                     println("OK I will go there!")
                     board[user_row][user_col] = Charater.King
-                    if(board[user_row][user_col] == board[user_row][user_col+1])
-                    {
-                        board[user_row][user_col+1] = Charater.Empty
-                    }
-                    else if(board[user_row][user_col] == board[user_row][user_col-1])
-                    {
-                        board[user_row][user_col-1] = Charater.Empty
-                    }
-                    else if(board[user_row][user_col] == board[user_row+1][user_col])
-                    {
-                        board[user_row+1][user_col]= Charater.Empty
-                    }
-                    else if(board[user_row][user_col] == board[user_row-1][user_col])
-                    {
-                        board[user_row-1][user_col]= Charater.Empty
-                    }
-                    else if(board[user_row][user_col] == board[user_row-1][user_col+1])
-                    {
-                        board[user_row-1][user_col+1]= Charater.Empty
-                    }
-                    else if(board[user_row][user_col] == board[user_row+1][user_col+1])
-                    {
-                        board[user_row+1][user_col+1]= Charater.Empty
-                    }
-                    else if(board[user_row][user_col] == board[user_row-1][user_col-1])
-                    {
-                        board[user_row-1][user_col-1]= Charater.Empty
-                    }
-                    else if(board[user_row][user_col] == board[user_row+1][user_col-1])
-                    {
-                        board[user_row+1][user_col-1]= Charater.Empty
-                    }
+                    board[user_in_row][user_in_col] = Charater.Empty
                     print_board(board)
                     check = false
                 }
@@ -146,7 +121,7 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     {
                         println("Ok, I will move :/")
                         board[user_row][user_col] = Charater.Queen
-                        board[user_row][user_col] = Charater.Empty
+                        board[user_in_row][user_in_col] = Charater.Empty
                         print_board(board)
                         check = false
                     }
@@ -181,7 +156,7 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     {
                         println("HAHA I'm going!")
                         board[user_row][user_col] = Charater.Rook
-                        board[user_row][user_col] = Charater.Empty
+                        board[user_in_row][user_in_col] = Charater.Empty
                         print_board(board)
                         check = false
                         break
@@ -220,7 +195,7 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                     {
                         println("OK...")
                         board[user_row][user_col] = Charater.Bishop
-                        board[user_row][user_col] = Charater.Empty
+                        board[user_in_row][user_in_col] = Charater.Empty
                         print_board(board)
                         check = false
                     }
@@ -259,7 +234,7 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                 {
                     println("I will bring the death!")
                     board[user_row][user_col] = Charater.Knight
-                    board[user_row][user_col] = Charater.Empty
+                    board[user_in_row][user_in_col] = Charater.Empty
                     print_board(board)
                     check = false
                 }
@@ -292,7 +267,7 @@ fun move_chess(board:ArrayList<ArrayList<Charater>>,user_in_row:Int,user_in_col:
                 {
                     println("Go Go Go!!!")
                     board[user_row][user_col] = Charater.Pawn
-                    board[user_row+1][user_col] = Charater.Empty
+                    board[user_in_row][user_in_col] = Charater.Empty
                     print_board(board)
                     check = false
                 }
